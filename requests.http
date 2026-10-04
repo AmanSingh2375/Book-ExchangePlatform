@@ -1,0 +1,10 @@
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Data Structures and Algorithms",
+  "author": "Narasimha Karumanchi",
+  "category": "Computer Science",
+  "owner": "Aman"
+}

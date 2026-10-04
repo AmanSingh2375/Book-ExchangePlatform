@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNest | Book Exchange Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#" class="logo">Book<span>Nest.</span></a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#books">Explore Books</a>
+            <a href="#add-book">Add a Book</a>
+        </nav>
+        <a href="#add-book" class="nav-button">Exchange Books ↗</a>
+        <div id="auth-nav">
+    <a href="#auth" class="nav-button" id="login-nav">Login / Register</a>
+    <span id="logged-in-user" hidden></span>
+    <button type="button" id="logout-button" hidden>Logout</button>
+</div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">READ MORE. WASTE LESS.</p>
+                <h1>Your next favourite book is <span>closer than you think.</span></h1>
+                <p class="hero-text">
+                    Discover books shared by fellow readers, exchange your
+                    old favourites and give every book a new story.
+                </p>
+                <a href="#books" class="primary-button">Explore Books →</a>
+                <div class="hero-stats">
+                    <div><strong>Share</strong><small>your books</small></div>
+                    <div><strong>Discover</strong><small>new stories</small></div>
+                    <div><strong>Connect</strong><small>with readers</small></div>
+                </div>
+            </div>
+            <div class="hero-art">
+                <div class="book-illustration">
+                    <div class="book book-one"><span>THE ART OF<br>LEARNING</span></div>
+                    <div class="book book-two"><span>THINK<br>BETTER</span></div>
+                    <div class="book book-three"><span>NEW<br>CHAPTERS</span></div>
+                    <div class="art-note">A good book<br>deserves another reader ✦</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="books-section" id="books">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">THE COMMUNITY SHELF</p>
+                    <h2>Find your next read<span>.</span></h2>
+                    <p>Explore books available from fellow readers.</p>
+                </div>
+                <span class="book-count" id="book-count">Loading books...</span>
+            </div>
+
+            <div class="search-row">
+                <input type="search" id="search-input"
+                    placeholder="Search by book title or author...">
+                <select id="category-filter">
+                    <option value="all">All Categories</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Networking">Networking</option>
+                    <option value="Database">Database</option>
+                    <option value="Other">Other</option>
+                </select>
+                <button id="search-button" class="primary-button">Search</button>
+            </div>
+
+            <div id="book-grid" class="book-grid">
+                <p class="loading-message">Connecting to your book collection...</p>
+            </div>
+            <p id="empty-message" class="empty-message" hidden>
+                No books found. Try another search.
+            </p>
+        </section>
+
+        <section class="add-section" id="add-book">
+            <div class="add-info">
+                <p class="eyebrow">PASS IT FORWARD</p>
+                <h2>Someone is waiting for your next book<span>.</span></h2>
+                <p>Add a book to the community shelf and help another reader
+                   discover something wonderful.</p>
+            </div>
+
+            <form id="add-book-form" class="book-form">
+                <h3>Add a book</h3>
+
+                <label for="book-id">Book ID</label>
+                <input type="number" id="book-id" min="1" required
+                    placeholder="Enter a unique ID">
+
+                <label for="book-title">Book title</label>
+                <input type="text" id="book-title" required
+                    placeholder="e.g. Clean Code">
+
+                <label for="book-author">Author</label>
+                <input type="text" id="book-author" required
+                    placeholder="Author name">
+
+                <label for="book-category">Category</label>
+                <select id="book-category" required>
+                    <option value="">Choose a category</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Networking">Networking</option>
+                    <option value="Database">Database</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="book-owner">Your name</label>
+                <input type="text" id="book-owner" required
+                    placeholder="Enter your name">
+
+                <button type="submit" class="primary-button full-button">
+                    Add Book to Shelf +
+                </button>
+                <p id="form-message" role="status"></p>
+            </form>
+        </section>
+        
+<section class="books-section" id="manage-requests">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">COMMUNITY ACTIVITY</p>
+            <h2>Manage exchange requests<span>.</span></h2>
+            <p>View requests and update their status.</p>
+        </div>
+        <button class="primary-button" id="refresh-requests">
+            Refresh ↻
+        </button>
+    </div>
+
+    <div id="request-list">
+        <p class="loading-message">Loading requests...</p>
+    </div>
+</section>
+<section class="auth-section" id="auth">
+    <div class="auth-card">
+        <p class="eyebrow">WELCOME TO BOOKNEST</p>
+        <h2 id="auth-title">Student Login</h2>
+        <p class="auth-description">Sign in to connect with fellow readers.</p>
+
+        <form id="auth-form">
+            <div id="name-field" hidden>
+                <label for="auth-name">Full Name</label>
+                <input type="text" id="auth-name" placeholder="Enter your name">
+            </div>
+
+            <label for="auth-email">Email Address</label>
+            <input type="email" id="auth-email" placeholder="Enter your email" required>
+
+            <label for="auth-password">Password</label>
+            <input type="password" id="auth-password"
+                   placeholder="Enter your password" minlength="8" required>
+
+            <button type="submit" class="primary-button" id="auth-submit">
+                Login
+            </button>
+            <p id="auth-message" role="status"></p>
+        </form>
+
+        <p class="auth-switch">
+            <span id="auth-switch-text">New to BookNest?</span>
+            <button type="button" id="auth-toggle">Create an account</button>
+        </p>
+    </div>
+</section>
+    </main>
+
+    <footer>
+        <a href="#home" class="logo">Book<span>Nest.</span></a>
+        <p>Good books travel. Great stories get shared.</p>
+        <small>College Project · Book Exchange Platform</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
